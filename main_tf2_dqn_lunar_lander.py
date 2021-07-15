@@ -1,9 +1,10 @@
 from simple_dqn_tf2 import Agent
 import numpy as np
 import gym
-from mlxtend.plotting import plot_learning_curves
 import matplotlib.pyplot as plt
 import tensorflow as tf
+from utils import plot_learning_curve
+
 
 if __name__ == '__main__':
     tf.compat.v1.disable_eager_execution()
@@ -37,7 +38,6 @@ if __name__ == '__main__':
         print('episode:', i,' score %.2f'%score, ' average_score %.2f'%avg_score\
                 ,'epsilon %.2f'%agent.epsilon)
 
-        file = 'lunarlander_tf2.png'
+    filename = 'lunarlander_tf2.png'
     x = [i+1 for i in range(n_games)]
-    plot_learning_curves(x, scores, eps_history)
-    plt.show()
+    plot_learning_curve(x, scores, eps_history, filename)
